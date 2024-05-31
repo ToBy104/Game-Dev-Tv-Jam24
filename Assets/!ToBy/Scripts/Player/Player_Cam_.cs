@@ -17,7 +17,7 @@ public class Player_Cam_ : MonoBehaviour
         turn.y += Input.GetAxis("Mouse Y") * sensitivity_y;
 
         //turn.x = Mathf.Clamp(turn.x, -60, 50);
-        turn.y = Mathf.Clamp(turn.y, -45, 45);
+        turn.y = Mathf.Clamp(turn.y, -97, 45);
 
         transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
         player.rotation = Quaternion.Euler(0, turn.x, 0);
