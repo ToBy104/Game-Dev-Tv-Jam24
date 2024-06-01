@@ -31,7 +31,8 @@ public class Enviroment : MonoBehaviour
             Transform temp = groundCubes[random];
 
             groundCubes.Remove(temp);
-            Destroy(temp.gameObject);
+            BlockTransitionManager blockActiveTransition = temp.gameObject.GetComponent<BlockTransitionManager>();
+            blockActiveTransition.enabled = true;
 
             timer = startTimer;
         }
