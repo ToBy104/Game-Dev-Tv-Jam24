@@ -36,7 +36,7 @@ public class MatchMaking : MonoBehaviour
 
         _connectedLobby = await QuickJoinLobby() ?? await CreateLobby();
 
-        if (_connectedLobby.Players.Count == _maxPlayers) _buttons.SetActive(false);
+        //if (_connectedLobby.Players.Count == _maxPlayers) _buttons.SetActive(false);
     }
 
     private async Task Authenticate()
