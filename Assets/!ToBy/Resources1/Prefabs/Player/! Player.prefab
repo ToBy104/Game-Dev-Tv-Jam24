@@ -1169,8 +1169,8 @@ MonoBehaviour:
   - {fileID: 2799421116869195335}
   - {fileID: 7592299871311050446}
   - {fileID: 4633791423059948391}
-  player_Cam_: {fileID: 0}
-  PlayerArmature: {fileID: 0}
+  player_Cam_: {fileID: 8121364315556022581}
+  PlayerArmature: {fileID: 2275257247759461895}
 --- !u!1 &3131118172553516386
 GameObject:
   m_ObjectHideFlags: 0

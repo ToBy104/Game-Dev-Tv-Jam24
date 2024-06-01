@@ -15,19 +15,19 @@ public class Player_Net_con_ : NetworkBehaviour
     [SerializeField] Component[] components;
 
     [Space(10)]
-    private GameObject player_Cam_;
-    private Transform PlayerArmature;
+    [SerializeField] private GameObject player_Cam_;
+    [SerializeField] private Transform PlayerArmature;
     public void SetPlayerActive()
     {
         PlayerArmature.position = Vector3.zero;
         player_Cam_.SetActive(true);
     }
 
-    private void Awake()
-    {
-        player_Cam_ = transform.GetChild(0).gameObject;
-        PlayerArmature = transform.GetChild(1);
-    }
+    //private void Awake()
+    //{
+    //    player_Cam_ = transform.GetChild(0).gameObject;
+    //    PlayerArmature = transform.GetChild(1);
+    //}
 
     public override void OnNetworkSpawn()
     {
