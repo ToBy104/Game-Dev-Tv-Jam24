@@ -1,42 +1,46 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Enviroment : MonoBehaviour
 {
     [SerializeField] private Transform ground;
-
+    [SerializeField] private TimerManager timerManager;
 
     private List<Transform> groundCubes;
 
-    [Space(10)]
-    [SerializeField] private float startTimer;
-    float timer;
-
     private void Awake()
     {
-        timer = startTimer;
-
         groundCubes = new List<Transform>();
-        foreach (Transform t in ground)
+        foreach (Transform t in ground) //Walk on Child
+        {
             groundCubes.Add(t);
+        }
     }
 
-    private void Update()
+    private void OnEnable()
+    {
+        timerManager.onTimerEnd.AddListener(OnTimerEnd);
+    }
+
+    private void OnTimerEnd()
     {
         if (groundCubes.Count <= 0)
             return;
-        if (timer <= 0)
-        {
-            int random = Random.Range(0, groundCubes.Count);
-            Transform temp = groundCubes[random];
 
-            groundCubes.Remove(temp);
-            BlockTransitionManager blockActiveTransition = temp.gameObject.GetComponent<BlockTransitionManager>();
+        int randomIndexBlock = Random.Range(0, groundCubes.Count);
+        Transform temp = groundCubes[randomIndexBlock];
+
+        groundCubes.Remove(temp);           //Remove from list
+        EnableBlockTransition(temp);        //Enable script BlockTransition
+    }
+
+    private void EnableBlockTransition(Transform block)
+    {
+        BlockTransitionManager blockActiveTransition = block.gameObject.GetComponent<BlockTransitionManager>();
+        if (blockActiveTransition != null)
+        {
             blockActiveTransition.enabled = true;
 
-            timer = startTimer;
         }
-        else
-            timer -= Time.deltaTime;
     }
 }
